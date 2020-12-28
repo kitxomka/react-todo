@@ -1,0 +1,11 @@
+html{
+    /* background-color: black; */
+}
+.container{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    /* background-color: cadetblue;
+    border: 1px solid black;
+    border-radius: 15px; */
+}
