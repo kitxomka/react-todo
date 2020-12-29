@@ -6,23 +6,21 @@ import './todoForm.styles.css'
 
 
 const TodoForm = (props) => {
-    const [input, setInput] = useState('')
-
-    console.log('TodoForm props: ', props);
+    const [input, setInput] = useState('');
+    
 
     const handelSubmit = e => {
-        e.preventDefault()
-        console.log('clicked')
-        console.log({input})
-        debugger;
-        let newItems = Object.assign([], props.items);
-        newItems.push(input)
-        props.setItems(newItems)
-        
+        e.preventDefault();
+
+        let newItems = Object.assign([], props.items, props.id);
+        newItems.push(input);
+        props.setItems(newItems);
+
+        setInput('');
     }
 
     const handleChange = e => {
-        setInput(e.target.value)
+        setInput(e.target.value);
     } 
      
     return (

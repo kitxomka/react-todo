@@ -6,17 +6,19 @@ import TodoList from './components/todoList/todoList.component'
 
 import './App.css'
 
-// const someObj = { test: 'vitaly'};
 
 function App() {
-  const [items, setItems] = useState([])
-  console.log('items: ', items);
+  const [items, setItems] = useState([]);
+  let id = Math.floor(Math.random() * 10000)
+
+  // console.log('items: ', items);
+
   return (
     <div className="container">
       <Header />
       <TodoForm setItems={setItems} items={items} />
       {/* {items.join(', ')} */}
-      <TodoList items={items} />
+      <TodoList items={items} id={id} />
     </div>
   );
 }

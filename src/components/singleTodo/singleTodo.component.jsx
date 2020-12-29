@@ -6,17 +6,26 @@ import React from 'react'
 import './singleTodo.styles.css'
 
 const SingleTodo = (props) => {
+    
+    const item = props.items.map(function (val, index) {
+        return{
+            key: index,
+            value: val
+        } 
+    })
 
+    console.log('item', item)
+    
     return (
         <>
             <div className="wrapper">
-                <div className="todo" >
-                    
-                    
-                </div>
-                <div className="icons">
-
-                </div>
+                {item.map((n) => (
+                    <div className="todo" key={n.key} >
+                        {n.value}
+                        
+                    </div>
+                ))}
+                
             </div>
         </>
     )
