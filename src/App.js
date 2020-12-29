@@ -9,16 +9,14 @@ import './App.css'
 
 function App() {
   const [items, setItems] = useState([]);
-  let id = Math.floor(Math.random() * 10000)
-
+  
   // console.log('items: ', items);
 
   return (
     <div className="container">
       <Header />
       <TodoForm setItems={setItems} items={items} />
-      {/* {items.join(', ')} */}
-      <TodoList items={items} id={id} />
+      <TodoList items={items} />
     </div>
   );
 }

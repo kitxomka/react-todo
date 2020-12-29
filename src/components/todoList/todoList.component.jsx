@@ -8,7 +8,7 @@ const TodoList = (props) => {
     return (
         <>
             <div className="list-container">
-                <SingleTodo items={props.items} id={props.id} />
+                <SingleTodo items={props.items} />
             </div>
         </>
     )
