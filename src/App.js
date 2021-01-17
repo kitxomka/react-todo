@@ -1,22 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-import Header from './components/header/header.component'
-import TodoForm from './components/todoForm/todoForm.component'
-import TodoList from './components/todoList/todoList.component'
+import Header from './components/Header'
+import TodoForm from './components/TodoForm'
 
 import './App.css'
 
 
 function App() {
-  const [items, setItems] = useState([]);
   
-  // console.log('items: ', items);
-
   return (
-    <div className="container">
-      <Header />
-      <TodoForm setItems={setItems} items={items} />
-      <TodoList items={items} />
+    <div className="home">
+      <Header/>
+      <TodoForm/>
     </div>
   );
 }
