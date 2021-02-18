@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import Todo from './Todo'
 
 
+
+
 const useLocalStorageState = (key, deafultValue = '') => {
   const [state, setState] = useState(() => JSON.parse(window.localStorage.getItem(key)) || deafultValue)
 
@@ -54,15 +56,15 @@ const TodoForm = (props) => {
       };
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
+        <>
+            {/* <form onSubmit={onSubmit}>
                 <input id="todo" className="todo-input" onChange={handleChange} value={todo} />
                 <button type="submit" className="add-btn">Add</button>
             </form>
             <div className="todo-list">
                 <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} />
-            </div>
-        </div>
+            </div> */}
+        </>
     )
 }
 
