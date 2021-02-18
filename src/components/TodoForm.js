@@ -1,10 +1,22 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Todo from './Todo'
+
+
+const useLocalStorageState = (key, deafultValue = '') => {
+  const [state, setState] = useState(() => JSON.parse(window.localStorage.getItem(key)) || deafultValue)
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state))
+  }, [key, state])
+
+  return [state, setState]
+
+} 
 
 const TodoForm = (props) => {
 
     const [todo, setTodo] = useState('')
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useLocalStorageState('todos', []);
 
     const handleChange = e => {
         setTodo(e.target.value)
@@ -14,7 +26,7 @@ const TodoForm = (props) => {
         setTodos([
           ...todos,
           {
-            id: todos.length,
+            id: todos.length+1,
             text: todo,
             isCompleted: false,
           }

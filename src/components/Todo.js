@@ -5,8 +5,8 @@ const Todo = ({todos, removeTodo, completeTodo }) => {
 
     const todoHtml = todos.map((todo) => {
         return (
-            <div key={todo.id}>
-              <div className="todo" style={{ textDecoration: todo.isCompleted ? "line-through" : "" }} >
+            <div key={todo.id} >
+              <div className={todo.id} style={{ textDecoration: todo.isCompleted ? "line-through" : ""}} >
                 {todo.text}
               </div>
               <button onClick={() => completeTodo(todo.id)}>Complete</button>
