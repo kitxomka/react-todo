@@ -75,6 +75,7 @@ function App() {
         priority: priority,
         dueDate: dueDate,
         in: true,
+        done: false
       }
     ])
     }else {
@@ -101,14 +102,18 @@ function App() {
     setDialogOpen(true)
     setEditMode(true)
     setEditTodo(todo)
-    
   }
 
-  const handeleDone = (todo) => {
-    const newTodos = [...todos]
-    const t = newTodos.find(t => t.id = todo.id)
-    t.done = !t.done
-    setTodos(newTodos)
+  const handeleDone = (id) => {
+    console.log(id)
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.done = !todo.done;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+
   }
  
   
@@ -117,7 +122,6 @@ function App() {
         <CssBaseline />
           <Container maxWidth="sm" style={{}}>
             <Header handleFabClick={handleDialogOpen}/>
-           
             <TodoList todos={todos} handleDelete={handleDelete} handeleEdit={handeleEdit} handeleDone={handeleDone} />
           </Container>
         <FormDialog open={dialogOpen} handleClose={handleDialogClose} handleSubmit={handleSubmit} formik={formik} editMode={editMode}/>

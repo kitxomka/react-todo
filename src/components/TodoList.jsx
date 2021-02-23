@@ -12,7 +12,7 @@ const TodoList = (props) => {
 const todoHtml = props.todos.map(todo =>{
     
     return(
-        <Fade in={todo.in} timeout={400}>
+        <Fade in={todo.in} timeout={400} id={todo.id}>
             <Grid item>
                 <Paper elevation={3} style={{padding:'0.8rem'}} >
                     <Grid container justify='space-between' alignItems="center">
@@ -31,7 +31,7 @@ const todoHtml = props.todos.map(todo =>{
                             <IconButton size='small' onClick={() => {props.handeleEdit(todo)}}>
                                 <EditIcon />
                             </IconButton>
-                            <IconButton size='small' onClick={() => {props.handeleDone(todo)}} >
+                            <IconButton size='small' onClick={() => {props.handeleDone(todo.id)}} >
                                 <DoneIcon/>
                             </IconButton>
                         </ButtonGroup>
