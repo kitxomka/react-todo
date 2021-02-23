@@ -4,22 +4,30 @@ import uuid from 'react-uuid'
 import { CssBaseline, Container } from '@material-ui/core'
 import { useFormik  } from 'formik'
 
+
 import Header from './components/Header.jsx'
 import TodoList from './components/TodoList.jsx'
 import FormDialog from './components/FormDialog.jsx'
 
-import './App.css'
 
+const useLocalStorageState = (key, deafultValue = '') => {
+  const [state, setState] = useState(() => JSON.parse(window.localStorage.getItem(key)) || deafultValue)
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state))
+  }, [key, state])
+
+  return [state, setState]
+
+}
 
 
 function App() {
 
-  
-  const [todos, setTodos] = useState([{id: 1, val: 'todo app', priority: 'High', dueDate:'2021-02-25'}])
+  const [todos, setTodos] = useLocalStorageState('todos', []);
   const [dialogOpen, setDialogOpen] = useState(false)
   const [editMode, setEditMode] = useState(false)
   const [editTodo, setEditTodo] = useState({})
-
 
   useEffect(() => {
     if(editMode){
@@ -66,6 +74,7 @@ function App() {
         val: todoText,
         priority: priority,
         dueDate: dueDate,
+        in: true,
       }
     ])
     }else {
@@ -84,10 +93,8 @@ function App() {
   }
 
   const handleDelete = (id) => {
-    const updatedTodos = todos.filter(todo => todo.id !== id)
-        setTodos(updatedTodos)
-        console.log(todos)
-        console.log(updatedTodos)
+    const newTodos = [...todos]
+    setTodos(newTodos.filter(todo => todo.id !== id))
   }
 
   const handeleEdit = (todo) => {
@@ -103,13 +110,15 @@ function App() {
     t.done = !t.done
     setTodos(newTodos)
   }
-
+ 
+  
   return (
       < >
         <CssBaseline />
           <Container maxWidth="sm" style={{}}>
             <Header handleFabClick={handleDialogOpen}/>
-            <TodoList todos={todos} handleDelete={handleDelete} handeleEdit={handeleEdit} handeleDone={handeleDone}/>
+           
+            <TodoList todos={todos} handleDelete={handleDelete} handeleEdit={handeleEdit} handeleDone={handeleDone} />
           </Container>
         <FormDialog open={dialogOpen} handleClose={handleDialogClose} handleSubmit={handleSubmit} formik={formik} editMode={editMode}/>
       </>

@@ -7,7 +7,6 @@ import {Button,  DialogActions, Dialog, DialogContent, DialogTitle} from '@mater
 
 const FormDialog = (props) => {
 
-    
     return (
         <Dialog open={props.open} onClose={props.handleClose} style={{minWidth: '60vw'}}>
            <DialogTitle id="form-dialog-title">{props.editMode ? 'Update ' : 'Add'} Todo</DialogTitle>
