@@ -18,6 +18,8 @@
     "react-icons": "^4.1.0",
     "react-scripts": "4.0.1",
     "react-uuid": "^1.0.2",
+    "use-persisted-reducer": "^2.1.0",
+    "use-reducer-with-local-storage": "^1.1.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
