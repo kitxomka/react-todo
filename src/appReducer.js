@@ -12,7 +12,7 @@ const newTodo = (currentInputValue, priority, dueDate) => {
 }
 
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
     dialogOpen: false,
     filterPriority: '',
     todos: [],
@@ -22,11 +22,8 @@ const INITIAL_STATE = {
 };
 
 
-export const reducer = (state = INITIAL_STATE, action) => {
-    // console.log('inside reducer state:', state);
-    // console.log('reducer action:', action);
+export const appReducer = (state = INITIAL_STATE, action) => {
     
-
     switch (action.type) {
         case ACTIONS.SET_DIALOG_OPEN_STATE:
             return { ...state, dialogOpen: action.dialogOpen, currentInputValue: action.currentInputValue, priority: action.priority, dueDate: action.dueDate }
@@ -54,7 +51,6 @@ export const reducer = (state = INITIAL_STATE, action) => {
             }break; 
      
         case ACTIONS.DONE_TODO:
-            // debugger;
             const newTodos2 = [...state.todos];
             var updetTodo = newTodos2.map(todo => {
                 if (todo.id === action.payload.id) {

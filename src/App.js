@@ -7,25 +7,24 @@ import { Button, DialogActions, Dialog, DialogContent, DialogTitle } from '@mate
 import { Grid, TextField } from '@material-ui/core'
 import { Select, FormControl, InputLabel, MenuItem } from '@material-ui/core'
 
-import {reducer} from './appReducer.js'
+import {appReducer, INITIAL_STATE} from './appReducer.js'
 import {ACTIONS} from './actions'
 import Header from './components/Header.jsx'
 import Todo from './components/Todo.jsx'
 
 
 
-
-
+// Seving to the local storage
 const usePersistedReducer = createPersistedReducer('state');
 
 const App = (props) => {
-    const [state, dispatch] = usePersistedReducer(reducer, props.INITIAL_STATE);
+
+    const [state, dispatch] = usePersistedReducer(appReducer, INITIAL_STATE);
 
     const getCurrentDate = () => {
         const now = new Date();
         return now.toISOString().slice(0, 10);
       }
-   
 
     const todoHtml = state.todos?.map(todo => { return <Todo key={todo.id} todo={todo} dispatch={dispatch} /> })
 
